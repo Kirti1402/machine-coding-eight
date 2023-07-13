@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { MeetupContext } from "../Context/Meetupcontext";
 import dateFormat from "dateformat";
+import {Link} from "react-router-dom"
 
 export const Home = () => {
-  const { meetsUpData } = useContext(MeetupContext);
-  //   const [filterMeetUp,setFilterData] = useState(meetsUpData)
+  const { meetsUpData,setMeetUpDetail } = useContext(MeetupContext);
   const [searchQuery, setSearchQuery] = useState("");
   const [dropdown, setDropdown] = useState("");
   let filterMeetUp = meetsUpData;
@@ -29,6 +29,9 @@ export const Home = () => {
       return isDropDownMatch && isSearchedMatched;
     });
 
+    const onClickCardHandle = (cardDetail)=>{
+        setMeetUpDetail(cardDetail)
+    }
   return (
     <div className="home">
       <header className="header">
@@ -58,6 +61,7 @@ export const Home = () => {
             let time = parts[1].split(":");
             return (
               <div className="meetup-card" key={id}>
+                <Link to="/meetupdetail" className="link" onClick={()=>onClickCardHandle(meetupItem)}>
                 <div>
                   <img src={eventThumbnail} alt={title} />
                 </div>
@@ -73,6 +77,8 @@ export const Home = () => {
                   <h4>{title}</h4>
                 </div>
                 <p className="eventType">{eventType} Event</p>
+                </Link>
+              
               </div>
             );
           })}

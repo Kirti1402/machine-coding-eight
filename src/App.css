@@ -62,5 +62,16 @@ hr {
 }
 
 .eventtypedropdown{
-  
+  display: flex;
+  justify-content: flex-end;
+  margin-right:50px ;
+}
+
+select {
+  height: 25px;
+}
+
+.link{
+  text-decoration: none;
+  color: black;
 }
