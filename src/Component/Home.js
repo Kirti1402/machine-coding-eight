@@ -53,7 +53,7 @@ export const Home = () => {
         </select>
       </div>
       <div className="card-container">
-        {filterMeetUp &&
+        {filterMeetUp ?
           filterMeetUp.map((meetupItem) => {
             const { id, title, eventStartTime, eventType, eventThumbnail } =
               meetupItem;
@@ -82,7 +82,7 @@ export const Home = () => {
               
               </div>
             );
-          })}
+          }) : <p>No Meet Up Found</p>}
       </div>
     </div>
   );

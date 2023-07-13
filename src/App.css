@@ -21,6 +21,8 @@ justify-content: space-between;
   width: 200px;
   outline: none;
   margin-right: 50px;
+  padding: 5px;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .home{
@@ -72,7 +74,9 @@ hr {
 }
 
 select {
-  height: 25px;
+  outline: none;
+  padding: 5px;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .link{

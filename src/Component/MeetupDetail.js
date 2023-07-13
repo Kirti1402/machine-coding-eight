@@ -1,7 +1,7 @@
 
 import React, { useContext, useEffect, useState } from "react";
 import { MeetupContext } from "../Context/Meetupcontext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 import dateFormat from "dateformat";
 
 export default function MeetupDetail() {
@@ -23,7 +23,8 @@ const navigate = useNavigate();
   return (
     <div className="home">
         <header className="header">
-    <p>Meetup</p>
+            <Link to="/" className="link"><p>Meetup</p></Link>
+    
     <input
       onChange={(event) => onChangeSearchHandle(event.target.value)}
       type="text"
