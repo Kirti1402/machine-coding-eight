@@ -77,6 +77,82 @@ select {
 }
 
 .detail-img{
-    width: 350px;
+    width: 500px;
+    height: 300px;
+}
+
+.speaker-card img{
+  width: 80px;
+  height:80px;
+  border-radius: 100%;
+}
+
+.description{
+  word-wrap: break-word;
+  width: 500px;
+  font-size: 14px;
+}
+
+.detail-container{
+  display: flex;
+  justify-content: space-between;
+  margin: 0px 50px;
+}
+
+.event-tag{
+  display: flex;
+}
+
+.event-tag p{
+  font-size: 15px;
+  margin: 10px;
+  background-color: coral;
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+}
+
+.card-description >*{
+  margin-bottom:20px;
+}
+.hosted >*{
+  margin-top: 5px;
+}
+
+.eventdescription >*{
+  margin-bottom: 10px;
+}
+
+.addtionalInformation>*{
+  margin-bottom: 10px;
+}
+@media only screen and (max-width: 768px){
+  .header p {
+    margin-left:25px;
+  }
+  
+  .header input{
+    width: 150px;
+    outline: none;
+    margin-right: 25px;
+  }
+  .detail-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px 25px;
+  }
+  .detail-img{
+   
+    width: 300px;
     height: 200px;
+}
+.description{
+  word-wrap: break-word;
+  width: 300px;
+  font-size: 14px;
+}
+hr {
+  margin: 20px 25px;
+}
 }

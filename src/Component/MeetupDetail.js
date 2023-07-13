@@ -2,11 +2,18 @@
 import React, { useContext, useEffect, useState } from "react";
 import { MeetupContext } from "../Context/Meetupcontext";
 import { useNavigate } from "react-router-dom";
+import dateFormat from "dateformat";
 
 export default function MeetupDetail() {
 const navigate = useNavigate();
     const { meetUpdetail ,searchQuery, setSearchQuery} = useContext(MeetupContext);
-    const {id, title,eventStartTimen,eventEndTime,location,address,eventThumbnail,eventDescription,hostedBy,eventType,isPaid,eventTags,speakers,price,additionalInformation}= meetUpdetail;
+    const {id, title,eventStartTime,eventEndTime,location,address,eventThumbnail,eventDescription,hostedBy,eventType,isPaid,eventTags,speakers,price,additionalInformation}= meetUpdetail;
+    let evenstartAt = eventStartTime.split("T");
+    let date = dateFormat(evenstartAt[0], "dddd, mmmm dS, yyyy");
+    let startTime = evenstartAt[1].split(":");
+
+    let eventEnd = eventEndTime.split("T");
+    let endTime = eventEnd[1].split(":");
 
     const onChangeSearchHandle = (value) => {
         navigate("/")
@@ -28,23 +35,43 @@ const navigate = useNavigate();
         <div className="detail-container" key={id}>
             <div className="card-description" >
                 <h2>{title}</h2>
+                <div className="hosted">
                 <p>Hosted By:</p>
-                <p>{hostedBy}</p>
+                <h4>{hostedBy}</h4>
+                </div>
                 <img  className="detail-img"src={eventThumbnail} alt={title} />
-                <p>Detail</p>
-                <p>{eventDescription}</p>
-                <p>Additional Information</p>
-                <p><span>Dress Code</span><span>{additionalInformation.dressCode}</span></p>
-                <p><span>Age Restriction</span><span>{additionalInformation.ageRestrictions}</span></p>
+                <div className="eventdescription">
+                <h3>Detail</h3>
+                <p className="description">{eventDescription}</p>
+                </div>
+                <div className="addtionalInformation">
+                <h3>Additional Information</h3>
+                <p style={{fontSize:'15px'}}><span style={{fontWeight:'600'}}>Dress Code: </span><span>{additionalInformation.dressCode}</span></p>
+                <p  style={{fontSize:'15px'}}><span style={{fontWeight:'600'}}>Age Restriction: </span><span>{additionalInformation.ageRestrictions}</span></p>
+                </div>
                 <div>
-                    <p>Event Tag</p>
-                    <p>{eventTags.map((tags) => <span>{tags}</span>)}</p>
+                    <h3>Event Tag</h3>
+                    <p className="event-tag">{eventTags.map((tags) => <p>{tags}</p>)}</p>
                 </div>
             </div>
-            <div>
+            <div className="card-detail">
                 <div>
-                    <p>{address}</p>
+                    <p>{date} at {startTime[0]}:{startTime[1]} {startTime[0] < 12 ? "AM" : "PM"} to</p>
+                    <p>{date} at {endTime[0]}:{endTime[1]} {endTime[0]  < 12 ? "AM" : "PM"} </p>
+                </div>
+                <div>
+                    <p><i className="fas fa-map-marker-alt"></i>{address}</p>
                     <p>{price}</p>
+                </div>
+                <div className="speaker-container">
+                    <h4>Speakers: ({speakers.length})</h4>
+                    <div className="speaker-card">
+                        {speakers.map(speakersItem =><div>
+                            <img src={speakersItem.image} alt={speakersItem.name}></img>
+                            <h5>{speakersItem.name}</h5>
+                            <p>{speakersItem.designation}</p>
+                        </div>)}
+                    </div>
                 </div>
             </div>
         </div>
