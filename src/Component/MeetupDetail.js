@@ -54,22 +54,42 @@ const navigate = useNavigate();
                     <p className="event-tag">{eventTags.map((tags) => <p>{tags}</p>)}</p>
                 </div>
             </div>
-            <div className="card-detail">
-                <div>
+            <div >
+                <div className="card-detail">
+                <div className="time-detail">
+                    <div>
+                    <i class='far fa-clock'></i>
+                    </div>
+                    <div>
                     <p>{date} at {startTime[0]}:{startTime[1]} {startTime[0] < 12 ? "AM" : "PM"} to</p>
                     <p>{date} at {endTime[0]}:{endTime[1]} {endTime[0]  < 12 ? "AM" : "PM"} </p>
+                    </div>
+
+                    
                 </div>
-                <div>
-                    <p><i className="fas fa-map-marker-alt"></i>{address}</p>
-                    <p>{price}</p>
+                    <div className="address">
+                    <p><i className="fas fa-map-marker-alt"></i><span>{address}</span></p>
+                    </div>
+                    <div className="currency">
+                    <p><span>&#8377;</span>{price}</p>
+
+                    </div>
+
                 </div>
+                
                 <div className="speaker-container">
                     <h4>Speakers: ({speakers.length})</h4>
                     <div className="speaker-card">
-                        {speakers.map(speakersItem =><div>
+                        {speakers.map(speakersItem =><div className="speaker-detail">
+                            <div>
                             <img src={speakersItem.image} alt={speakersItem.name}></img>
+                            </div>
+                            
+                            <div>
                             <h5>{speakersItem.name}</h5>
                             <p>{speakersItem.designation}</p>
+                            </div>
+                            
                         </div>)}
                     </div>
                 </div>
