@@ -4,8 +4,8 @@ import dateFormat from "dateformat";
 import {Link} from "react-router-dom"
 
 export const Home = () => {
-  const { meetsUpData,setMeetUpDetail } = useContext(MeetupContext);
-  const [searchQuery, setSearchQuery] = useState("");
+  const { meetsUpData,setMeetUpDetail,searchQuery, setSearchQuery } = useContext(MeetupContext);
+  
   const [dropdown, setDropdown] = useState("");
   let filterMeetUp = meetsUpData;
 
@@ -30,6 +30,7 @@ export const Home = () => {
     });
 
     const onClickCardHandle = (cardDetail)=>{
+      console.log(cardDetail)
         setMeetUpDetail(cardDetail)
     }
   return (

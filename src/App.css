@@ -75,3 +75,8 @@ select {
   text-decoration: none;
   color: black;
 }
+
+.detail-img{
+    width: 350px;
+    height: 200px;
+}
